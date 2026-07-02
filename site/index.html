@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hipoteza, crowdfunding dla polskiej nauki</title>
+<meta name="description" content="Hipoteza to otwarta, transparentna platforma finansowania społecznościowego projektów badawczych. Kickstarter dla nauki: recenzowany, jawny, open source." />
+<meta name="theme-color" content="#ffffff" />
+<meta property="og:title" content="Hipoteza, crowdfunding dla polskiej nauki" />
+<meta property="og:description" content="Finansuj konkretne projekty badawcze, nie osoby. Recenzja ekspercka, pełna jawność wydatków, otwarty kod i otwarte wyniki." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://hipoteza.isy.sh" />
+<meta property="og:locale" content="pl_PL" />
+<meta property="og:image" content="https://hipoteza.isy.sh/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Hipoteza, crowdfunding dla polskiej nauki" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Hipoteza, crowdfunding dla polskiej nauki" />
+<meta name="twitter:description" content="Finansuj konkretne, recenzowane badania. Nie osoby. Publiczna beta." />
+<meta name="twitter:image" content="https://hipoteza.isy.sh/assets/og-image.png" />
+<link rel="canonical" href="https://hipoteza.isy.sh/" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%AC%3C/text%3E%3C/svg%3E" />
+<script>(function(){try{if(localStorage.getItem('hipoteza_theme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+<link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+<a class="skip" href="#glowna">Przejdź do treści</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#top" aria-label="Hipoteza, strona główna">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+          <path d="M12 3h8M13 3v8.2L6.5 24.6A3 3 0 0 0 9.2 29h13.6a3 3 0 0 0 2.7-4.4L19 11.2V3" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M9.7 20h12.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="14" cy="24" r="1.4" fill="currentColor"/>
+          <circle cx="18.5" cy="25.5" r="1" fill="currentColor"/>
+        </svg>
+      </span>
+      <span class="brand__name">Hipoteza</span>
+    </a>
+    <nav class="nav__links" aria-label="Główna nawigacja">
+      <a href="#jak">Jak to działa</a>
+      <a href="#inaczej">Czym się różnimy</a>
+      <a href="#zaufanie">Zaufanie</a>
+      <a href="#projekty">Projekty</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Przełącz motyw jasny lub ciemny" title="Przełącz motyw">
+        <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="btn btn--sm" href="#zapisz">Dołącz do bety</a>
+    </div>
+  </div>
+</header>
+
+<main id="glowna">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="wrap hero__inner">
+      <p class="eyebrow">Publiczna beta · nie prowadzimy jeszcze zbiórek</p>
+      <h1 class="hero__title">Finansujmy <span class="grad">hipotezy</span>,<br>nie tylko granty.</h1>
+      <p class="hero__lead">
+        Hipoteza pomaga finansować małe, konkretne badania naukowe: <strong>pilotaże, replikacje
+        i eksperymenty</strong>, które są zbyt szybkie, ryzykowne albo niszowe dla klasycznych grantów,
+        ale zbyt ważne, żeby czekały w szufladzie.
+      </p>
+      <p class="hero__status">
+        To publiczna beta. Na tym etapie zbieramy zgłoszenia projektów i recenzentów oraz budujemy
+        proces oceny. <strong>Nie prowadzimy jeszcze zbiórek i nie przyjmujemy wpłat.</strong>
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--lg" href="zglos-projekt.html">Zgłoś projekt badawczy</a>
+        <a class="btn btn--ghost btn--lg" href="#zapisz">Dołącz do bety</a>
+      </div>
+      <ul class="hero__badges" aria-label="Kluczowe cechy">
+        <li>
+          <svg class="tick" viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path d="M4 10.5l3.5 3.5L16 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Recenzja ekspercka
+        </li>
+        <li>
+          <svg class="tick" viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path d="M4 10.5l3.5 3.5L16 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Jawny budżet
+        </li>
+        <li>
+          <svg class="tick" viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path d="M4 10.5l3.5 3.5L16 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Zero prowizji dla badaczy
+        </li>
+        <li>
+          <svg class="tick" viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path d="M4 10.5l3.5 3.5L16 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Otwarte wyniki
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DEMO PROJECTS -->
+  <section class="band band--demo" id="projekty">
+    <div class="wrap">
+      <div class="section-head section-head--demo">
+        <span class="demo-badge"><span class="demo-badge__dot" aria-hidden="true"></span> Klikalne demo</span>
+        <h2>Zobacz, jak wyglądałaby zbiórka</h2>
+        <p class="section-sub">Trzy makiety projektów. Kliknij kartę, aby przejrzeć hipotezę, budżet i kamienie milowe. To nie są prawdziwe zbiórki, a <strong>kwoty, liczby wspierających i czas są symulowane</strong> na potrzeby pokazu.</p>
+      </div>
+      <div class="grid grid--3 projects">
+        <button type="button" class="pcard" data-project="bees" aria-haspopup="dialog">
+          <span class="pcard__demo">DEMO</span>
+          <span class="pcard__tag">Biologia</span>
+          <span class="pcard__title">Marker genetyczny odporności pszczół</span>
+          <span class="pcard__lead">Szukamy wariantu genu powiązanego z naturalną odpornością rodzin pszczelich na warrozę.</span>
+          <span class="progress" aria-hidden="true"><span style="width:72%"></span></span>
+          <span class="pcard__meta"><strong>28 800 zł</strong> z 40 000 zł · 214 wspierających · 11 dni <span class="pcard__sim">(symulacja)</span></span>
+          <span class="pcard__more">Zobacz szczegóły <span class="arw" aria-hidden="true">→</span></span>
+        </button>
+        <button type="button" class="pcard" data-project="air" aria-haspopup="dialog">
+          <span class="pcard__demo">DEMO</span>
+          <span class="pcard__tag">Środowisko</span>
+          <span class="pcard__title">Otwarta sieć czujników powietrza</span>
+          <span class="pcard__lead">50 tanich czujników PM2.5 z publicznym API, żeby mieszkańcy małych miast widzieli realne dane.</span>
+          <span class="progress" aria-hidden="true"><span style="width:46%"></span></span>
+          <span class="pcard__meta"><strong>13 700 zł</strong> z 30 000 zł · 132 wspierających · 19 dni <span class="pcard__sim">(symulacja)</span></span>
+          <span class="pcard__more">Zobacz szczegóły <span class="arw" aria-hidden="true">→</span></span>
+        </button>
+        <button type="button" class="pcard" data-project="memory" aria-haspopup="dialog">
+          <span class="pcard__demo">DEMO</span>
+          <span class="pcard__tag">Psychologia</span>
+          <span class="pcard__title">Replikacja badania nad pamięcią</span>
+          <span class="pcard__lead">Preregistrowana, rzetelna replikacja klasycznego eksperymentu nad pamięcią roboczą.</span>
+          <span class="progress" aria-hidden="true"><span style="width:100%"></span></span>
+          <span class="pcard__meta pcard__meta--done"><strong>Sfinansowano</strong> · 389 wspierających <span class="pcard__sim">(symulacja)</span></span>
+          <span class="pcard__more">Zobacz szczegóły <span class="arw" aria-hidden="true">→</span></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="band" id="problem">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Nie wszystko wartościowe mieści się w rytmie grantów</h2>
+        <p class="section-sub">
+          Klasyczne konkursy grantowe są potrzebne, ale mają wąskie gardło: dużo dobrych wniosków,
+          mało środków i długa droga do decyzji. Małe pilotaże i replikacje często nie mają
+          własnego naboru.
+        </p>
+      </div>
+      <div class="grid grid--3">
+        <div class="card card--muted">
+          <div class="stat">13,3%</div>
+          <p>wskaźnik sukcesu w konkursie OPUS 30 Narodowego Centrum Nauki (wyniki z 2026 roku).</p>
+        </div>
+        <div class="card card--muted">
+          <div class="stat">18,0%</div>
+          <p>wskaźnik sukcesu w konkursie SONATA 21 dla badaczy na wczesnym etapie kariery.</p>
+        </div>
+        <div class="card card--muted">
+          <div class="stat">miesiące</div>
+          <p>tyle zwykle dzieli złożenie wniosku od decyzji i wypłaty. Szybki pilotaż nie zawsze może tyle czekać.</p>
+        </div>
+      </div>
+      <p class="footnote">Źródło wskaźników sukcesu: Narodowe Centrum Nauki, wyniki konkursów OPUS 30 i SONATA 21, <a href="https://www.ncn.gov.pl/aktualnosci/2026-06-11-wyniki-opus30-sonata21" rel="noopener" target="_blank">ncn.gov.pl</a>.</p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="band band--alt" id="jak">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Jak działa Hipoteza</h2>
+        <p class="section-sub">Cztery kroki od pomysłu badawczego do sfinansowanego eksperymentu.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <div class="step__no">1</div>
+          <h3>Zgłoszenie projektu</h3>
+          <p>Zespół badawczy opisuje <strong>hipotezę, metodę, budżet i mierzalny efekt</strong>. Nie zbierasz „na siebie”, tylko na konkretne badanie z jasnym celem.</p>
+        </li>
+        <li class="step">
+          <div class="step__no">2</div>
+          <h3>Recenzja ekspercka</h3>
+          <p>Niezależni <strong>recenzenci</strong> oceniają sensowność i wykonalność. To nasza odpowiedź na pseudonaukę: wpłacający nie muszą znać się na markerach genetycznych, bo od oceny są eksperci. Komitet recenzentów jest teraz w trakcie formowania.</p>
+        </li>
+        <li class="step">
+          <div class="step__no">3</div>
+          <h3>Zbiórka z celem</h3>
+          <p>Projekt rusza z progiem finansowania i kamieniami milowymi. Model <strong>„wszystko albo nic”</strong>: jeśli cel nie zostanie osiągnięty, pieniądze wracają do wpłacających.</p>
+        </li>
+        <li class="step">
+          <div class="step__no">4</div>
+          <h3>Jawność i wyniki</h3>
+          <p>Środki wypłacane transzami po realizacji etapów. <strong>Budżet, postępy i wyniki są publiczne</strong>, a dane i publikacje w otwartym dostępie.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- DIFFERENT -->
+  <section class="band" id="inaczej">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Czym różnimy się od zbiórki i od grantu</h2>
+        <p class="section-sub">Bierzemy najlepsze z obu światów: szybkość społeczności i rygor recenzji.</p>
+      </div>
+      <div class="compare">
+        <table>
+          <thead>
+            <tr><th scope="col">Cecha</th><th scope="col">Zwykła zbiórka</th><th scope="col" class="is-us">Hipoteza</th><th scope="col">Klasyczny grant</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Na co idą pieniądze</th><td>na osobę lub cel ogólny</td><td class="is-us">na konkretny projekt badawczy</td><td>na projekt, ale przez instytucję</td></tr>
+            <tr><th scope="row">Ocena merytoryczna</th><td>brak</td><td class="is-us">recenzja ekspercka</td><td>recenzja ekspercka</td></tr>
+            <tr><th scope="row">Czas do startu</th><td>godziny</td><td class="is-us">dni lub tygodnie</td><td>miesiące</td></tr>
+            <tr><th scope="row">Jawność wydatków</th><td>zwykle brak</td><td class="is-us">pełna, publiczna</td><td>raport dla grantodawcy</td></tr>
+            <tr><th scope="row">Wyniki</th><td>brak</td><td class="is-us">otwarty dostęp</td><td>zależnie od umowy</td></tr>
+            <tr><th scope="row">Kod platformy</th><td>zamknięty</td><td class="is-us">open source (w przygotowaniu)</td><td>nie dotyczy</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="band band--alt" id="zaufanie">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Jak pilnujemy, żeby to była nauka, a nie „pamięć wody”</h2>
+        <p class="section-sub">
+          Najczęstszy zarzut wobec crowdfundingu nauki: skąd wpłacający ma wiedzieć, co jest sensowne?
+          U nas nie musi wiedzieć, bo od tego jest proces.
+        </p>
+      </div>
+      <div class="grid grid--3">
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 7l-3 6a3 3 0 0 0 6 0L6 7zM18 7l-3 6a3 3 0 0 0 6 0l-3-6zM4 7h16M8 21h8"/></svg>
+          </div>
+          <h3>Komitet recenzentów</h3>
+          <p>Docelowo każdy projekt przechodzi ocenę osób z dziedziny. Reputacja recenzentów jest jawna, a konflikt interesów zgłaszany. Komitet jest w trakcie formowania, nabór jest otwarty.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>
+          </div>
+          <h3>Transze i kamienie milowe</h3>
+          <p>Nie „cała kasa z góry”. Kolejne środki uwalniane są po udokumentowaniu postępów, więc słaby projekt zatrzymuje się wcześnie.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Radykalna jawność</h3>
+          <p>Budżet, faktury zbiorcze, dane i raporty są publiczne. Otwartość jest najlepszym filtrem na oszustwo i naciąganie.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 4v4h4"/></svg>
+          </div>
+          <h3>Zwrot, gdy się nie uda</h3>
+          <p>Model „wszystko albo nic” chroni wpłacających. Bez osiągnięcia progu pieniądze wracają.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Weryfikacja badaczy</h3>
+          <p>Afiliacja, ORCID i historia publikacji. Wiadomo, kto stoi za projektem i za co odpowiada.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 5l-2 14"/></svg>
+          </div>
+          <h3>Open source</h3>
+          <p>Cały mechanizm, czyli reguły, kod i algorytm podziału środków, będzie publikowany jako open source przed uruchomieniem płatności, tak aby każdy mógł go zweryfikować.</p>
+        </div>
+      </div>
+      <div class="section-cta">
+        <p>Masz dorobek naukowy i chcesz oceniać projekty, zanim ruszy ich zbiórka?</p>
+        <a class="btn btn--lg" href="zostan-recenzentem.html">Zgłoś się do komitetu recenzentów</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNDING MODELS -->
+  <section class="band band--alt" id="modele">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Skąd pieniądze na utrzymanie platformy</h2>
+        <p class="section-sub">
+          Naukowcy nie płacą prowizji. Platforma utrzymuje się z dobrowolnego napiwku wpłacających
+          i wsparcia instytucji, czyli modelu sprawdzonego przez najlepsze platformy na świecie.
+        </p>
+      </div>
+      <div class="grid grid--3">
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 10-10-3-3L5 16l-1 4z"/><path d="M13.5 6.5l3 3"/></svg>
+          </div>
+          <h3>Dobrowolny napiwek</h3>
+          <p>Przy wpłacie wspierający może dorzucić dowolny procent na platformę. Tak działa między innymi DonorsChoose, bez obciążania badaczy.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/></svg>
+          </div>
+          <h3>Patronat instytucji</h3>
+          <p>Uczelnie, fundacje i firmy mogą fundować „matching”, czyli podwajać wpłaty do wybranej dziedziny.</p>
+        </div>
+        <div class="card">
+          <div class="card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h9a4 4 0 0 1 0 8H9M7 7l3-3M7 7l3 3M17 17H8a4 4 0 0 1 0-8h7"/></svg>
+          </div>
+          <h3>Odpis 1,5% podatku</h3>
+          <p>Poprzez partnerską fundację pożytku publicznego, z ulgą podatkową dla darczyńców w Polsce.</p>
+        </div>
+      </div>
+      <div class="modele__cta">
+        <a class="btn btn--lg" href="#zapisz">Chcę wspierać badania</a>
+        <p class="footnote">To opis docelowego modelu. Na etapie bety nie przyjmujemy jeszcze wpłat, zbieramy tylko zapisy chętnych. Zero prowizji dla badaczy będzie dotyczyć opłat od zebranych środków. Koszty operatorów płatności pokryje napiwek lub patron.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNUP -->
+  <section class="cta" id="zapisz">
+    <div class="wrap cta__inner">
+      <h2>Budujemy to otwarcie. Dołącz na starcie.</h2>
+      <p>Jesteś naukowcem z pomysłem, chcesz wspierać badania albo recenzować projekty? Zostaw kontakt, odezwiemy się, gdy ruszy beta.</p>
+      <form class="signup" id="signupForm" novalidate>
+        <div class="signup__row">
+          <label class="sr-only" for="email">Adres e-mail</label>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="twoj@email.pl" required />
+          <label class="sr-only" for="rola">Rola</label>
+          <select id="rola" name="rola" aria-label="Twoja rola">
+            <option value="">Kim jesteś?</option>
+            <option value="naukowiec">Naukowiec lub zespół</option>
+            <option value="wspierajacy">Chcę wspierać badania</option>
+            <option value="recenzent">Chcę recenzować</option>
+            <option value="instytucja">Instytucja lub patron</option>
+          </select>
+          <button class="btn btn--lg" type="submit">Zapisz mnie</button>
+        </div>
+        <div class="consent-box" id="consentBox" hidden>
+          <label class="consent">
+            <input type="checkbox" id="consent" name="consent" required />
+            <span>Wyrażam zgodę na przetwarzanie mojego adresu e-mail przez Piotr Zientara Ego Development w celu kontaktu w sprawie startu platformy Hipoteza. Zapoznałem się z <a href="polityka-prywatnosci.html">polityką prywatności</a>. Zgodę mogę wycofać w każdej chwili.</span>
+          </label>
+        </div>
+        <p class="signup__note" id="formNote" role="status" aria-live="polite">Nie spamujemy. Jeden e-mail, gdy wystartujemy.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="band" id="faq">
+    <div class="wrap wrap--narrow">
+      <div class="section-head">
+        <h2>Najczęstsze pytania</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Czy mogę już teraz wpłacić na projekt?</summary>
+          <p>Jeszcze nie. Hipoteza jest w publicznej becie. Na tym etapie zbieramy zgłoszenia projektów i recenzentów oraz zapisy osób chętnych do wsparcia, ale nie prowadzimy zbiórek i nie przyjmujemy płatności. O uruchomieniu wpłat poinformujemy zapisanych z wyprzedzeniem, wraz z pełnym regulaminem zbiórek.</p>
+        </details>
+        <details>
+          <summary>Kto decyduje, do kogo trafi finansowanie?</summary>
+          <p>Wpłacający wybiera projekt, ale o dopuszczeniu projektu do zbiórki decyduje niezależny komitet recenzentów z danej dziedziny. Rozdział środków w zespole jest deklarowany z góry i jawny.</p>
+        </details>
+        <details>
+          <summary>Jak odróżniacie realne badania od pseudonauki?</summary>
+          <p>Trójstopniowo: recenzja ekspercka przed startem, wypłata w transzach po kamieniach milowych oraz pełna jawność danych i wydatków. To te same mechanizmy, które chronią wiarygodność w klasycznej nauce, tylko szybsze i otwarte.</p>
+        </details>
+        <details>
+          <summary>Czym to się różni od Patronite albo zrzutki?</summary>
+          <p>Patronite finansuje twórcę (osobę) w sposób ciągły. Zrzutka to zbiórka na dowolny cel bez oceny merytorycznej. Hipoteza finansuje pojedyncze, recenzowane projekty badawcze z jawnym budżetem i wynikiem, więc jest to raczej „Kickstarter dla nauki” niż „Patronite dla osób”.</p>
+        </details>
+        <details>
+          <summary>Ile kosztuje to naukowca?</summary>
+          <p>Nic od zebranych środków. Platforma utrzymuje się z dobrowolnych napiwków wpłacających, patronatu instytucji i mechanizmu 1,5% podatku przez fundację partnerską.</p>
+        </details>
+        <details>
+          <summary>Co, jeśli zbiórka nie osiągnie celu?</summary>
+          <p>Domyślny model to „wszystko albo nic”. Jeśli próg nie zostanie osiągnięty, wpłaty wracają do wspierających. Dla niektórych kategorii rozważamy model elastyczny z niższym progiem minimalnym.</p>
+        </details>
+        <details>
+          <summary>Naprawdę open source?</summary>
+          <p>Tak. Kod platformy, reguły recenzji i mechanizm podziału środków będą publiczne i możliwe do audytu. Chcemy, żeby zaufanie brało się z przejrzystości, nie z obietnic.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <div class="foot__brand">
+      <span class="brand__name">Hipoteza</span>
+      <p>Otwarty crowdfunding dla polskiej nauki. Projekt w budowie.</p>
+    </div>
+    <nav class="foot__links" aria-label="Stopka">
+      <a href="#jak">Jak to działa</a>
+      <a href="#zaufanie">Zaufanie</a>
+      <a href="#modele">Finansowanie</a>
+      <a href="#faq">FAQ</a>
+      <a href="zglos-projekt.html">Zgłoś projekt</a>
+      <a href="zasady-recenzji.html">Zasady recenzji</a>
+      <a href="zostan-recenzentem.html">Zostań recenzentem</a>
+      <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+      <a href="regulamin.html">Regulamin</a>
+    </nav>
+    <p class="foot__legal">© <span id="year">2026</span> Hipoteza · Piotr Zientara Ego Development · Zbudowano otwarcie</p>
+    <p class="foot__author">Projekt tworzy <a href="https://piotrzientara.pl" rel="noopener" target="_blank">Piotr Zientara</a></p>
+  </div>
+</footer>
+
+<!-- PROJECT MODAL -->
+<div class="modal" id="projectModal" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+    <button class="modal__close" type="button" data-close aria-label="Zamknij okno">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="cookie" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Informacja o ciasteczkach" hidden>
+  <p class="cookie__text">
+    Używamy wyłącznie niezbędnej pamięci lokalnej przeglądarki, potrzebnej do działania formularza zapisu.
+    Nie stosujemy ciasteczek śledzących ani analityki. Gdy w przyszłości uruchomimy płatności, ich
+    operator może ustawić własne ciasteczka dopiero na stronie płatności. Szczegóły w <a href="polityka-prywatnosci.html#cookies">polityce prywatności</a>.
+  </p>
+  <button class="btn btn--sm" id="cookieOk" type="button">Rozumiem</button>
+</div>
+
+<script src="assets/config.js"></script>
+<script src="assets/app.js" defer></script>
+</body>
+</html>

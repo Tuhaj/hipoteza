@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hipoteza.isy.sh/sitemap.xml
