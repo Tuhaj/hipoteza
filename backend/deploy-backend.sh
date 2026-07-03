@@ -19,6 +19,10 @@
 # lambda/index.mjs), so no API-level CORS config is needed.
 set -euo pipefail
 
+# Load local config/secrets if present (gitignored, at repo root).
+ENV_LOCAL="$(cd "$(dirname "$0")/.." && pwd)/.env.local"
+if [ -f "$ENV_LOCAL" ]; then set -a; . "$ENV_LOCAL"; set +a; fi
+
 REGION="${HIPOTEZA_LAMBDA_REGION:-eu-central-1}"
 FN="${HIPOTEZA_LAMBDA_NAME:-hipoteza-forms}"
 ORIGIN="${HIPOTEZA_ALLOW_ORIGIN:-https://hipoteza.isy.sh}"

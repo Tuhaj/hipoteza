@@ -12,6 +12,10 @@
 #   HIPOTEZA_BUCKET=my-bucket HIPOTEZA_DISTRIBUTION_ID=XXXX ./deploy.sh
 set -euo pipefail
 
+# Load local config/secrets if present (gitignored).
+ENV_LOCAL="$(cd "$(dirname "$0")" && pwd)/.env.local"
+if [ -f "$ENV_LOCAL" ]; then set -a; . "$ENV_LOCAL"; set +a; fi
+
 BUCKET="${HIPOTEZA_BUCKET:?Set HIPOTEZA_BUCKET to your S3 bucket name}"
 DISTRIBUTION_ID="${HIPOTEZA_DISTRIBUTION_ID:-}"
 SITE_DIR="$(cd "$(dirname "$0")/site" && pwd)"

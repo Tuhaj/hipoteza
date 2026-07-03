@@ -414,6 +414,33 @@ a{color:inherit;text-decoration:none}
 .rform__note{color:var(--muted-2);font-size:.9rem;margin:0}
 .rform__note.ok{color:var(--accent)}
 .rform__note.err{color:var(--danger)}
+/* honeypot: off-screen, not display:none so naive bots still fill it */
+.hp{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}
+
+/* ---------- Roadmap (D3) ---------- */
+.roadmap-wrap{max-width:760px;margin:0 auto}
+#roadmapChart{display:flex;flex-direction:column}
+.rm-item{display:grid;grid-template-columns:28px 1fr;gap:20px;padding-bottom:26px}
+.rm-node{position:relative;display:flex;justify-content:center}
+.rm-node::before{content:"";position:absolute;top:8px;bottom:-26px;width:2px;background:var(--line)}
+.rm-item:last-child .rm-node::before{display:none}
+.rm-dot{position:relative;z-index:1;width:16px;height:16px;border-radius:50%;background:var(--surface);border:2px solid var(--brand);margin-top:5px}
+.rm-active .rm-dot{background:var(--brand);box-shadow:0 0 0 5px var(--brand-soft)}
+.rm-active .rm-dot::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid var(--brand);animation:rmpulse 2.2s ease-out infinite}
+@keyframes rmpulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(2.6);opacity:0}}
+.rm-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);transition:transform .16s ease,border-color .16s ease}
+.rm-card:hover{transform:translateY(-2px);border-color:var(--brand-soft-border)}
+.rm-cardhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.rm-period{font-size:.8rem;font-weight:700;letter-spacing:.04em;color:var(--brand-strong);text-transform:uppercase}
+.rm-tag{font-size:.68rem;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--brand-soft);color:var(--brand-strong)}
+.rm-planned .rm-tag{background:var(--surface-2);color:var(--muted-2)}
+.rm-title{font-size:1.12rem;margin:.4em 0 .3em}
+.rm-desc{color:var(--muted);font-size:.96rem;margin:0}
+
+/* ---------- Contribute ---------- */
+.card--link{display:block;text-decoration:none;color:inherit}
+.card__go{display:inline-block;margin-top:6px;color:var(--brand-strong);font-weight:600;font-size:.92rem}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
 /* ---------- Responsive ---------- */
 @media (max-width:900px){

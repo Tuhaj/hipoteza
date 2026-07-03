@@ -268,6 +268,7 @@
       }
 
       var payload = {
+        hp: (document.getElementById("s_hp") || {}).value || "",
         email: value,
         rola: rola ? rola.value : "",
         consent: true,
@@ -347,6 +348,7 @@
       var pub = document.getElementById("r_public");
       var payload = {
         type: "reviewer",
+        hp: val("r_hp"),
         name: name,
         email: email,
         affiliation: val("r_aff"),
@@ -439,6 +441,7 @@
 
       var payload = {
         type: "project",
+        hp: val("p_hp"),
         lead: lead,
         email: email,
         affiliation: val("p_aff"),

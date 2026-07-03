@@ -29,17 +29,24 @@ export const handler = async (event) => {
   if (method === "OPTIONS") return resp(204, {});
   if (method !== "POST") return resp(405, { error: "method_not_allowed" });
 
+  const raw = event.body || "{}";
+  if (raw.length > 20000) return resp(413, { error: "too_large" });
+
   let data;
   try {
-    let body = event.body || "{}";
+    let body = raw;
     if (event.isBase64Encoded) body = Buffer.from(body, "base64").toString("utf8");
     data = JSON.parse(body);
   } catch {
     return resp(400, { error: "bad_json" });
   }
 
+  // Honeypot: real users never fill a hidden field. Pretend success, drop silently.
+  if (data.hp || data.website) return resp(200, { ok: true });
+
   const email = String(data.email || "").trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return resp(400, { error: "bad_email" });
+  if (email.length > 254) return resp(400, { error: "bad_email" });
   if (data.consent !== true) return resp(400, { error: "consent_required" });
 
   const apiKey = process.env.BREVO_API_KEY;
