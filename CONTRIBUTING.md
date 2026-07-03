@@ -14,6 +14,22 @@ bez frameworka i bez backendu), więc próg wejścia jest niski.
 3. Wprowadź zmiany na osobnej gałęzi (`git checkout -b moja-zmiana`).
 4. Otwórz Pull Request z krótkim opisem co i dlaczego.
 
+## Rozwój, testy i hooki
+
+Sama strona nie wymaga budowania, ale repozytorium ma lekkie narzędzia dev (Node 18+):
+
+```bash
+npm install        # narzędzia dev (husky, prettier) i wpięcie hooków git
+npm run check      # strażnik: długie myślniki, sekrety, identyfikatory infrastruktury
+npm test           # testy strukturalne (meta, sitemap, linki, honeypot)
+npm run verify     # check + test
+npm run format     # Prettier dla kodu w scripts/ i test/
+```
+
+Hook `pre-commit` (husky) uruchamia strażnika, sprawdzenie formatowania i testy przed
+każdym commitem, więc uruchom `npm install` po sklonowaniu, aby go wpiąć. Te same kroki
+przechodzi CI na push i pull request. Konwencje opisuje [docs/STYLEGUIDE.md](docs/STYLEGUIDE.md).
+
 ## Zasady dotyczące treści i kodu
 
 - **Bez długich myślników.** W tekstach (kopia, dokumenty, komentarze) nie używamy

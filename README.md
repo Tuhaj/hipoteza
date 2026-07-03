@@ -18,25 +18,30 @@ Operator: **Piotr Zientara Ego Development** (jednoosobowa działalność gospod
 - **Radykalna jawność**: budżet, kamienie milowe, dane i wyniki w otwartym dostępie.
 - **Wypłata w transzach** po realizacji etapów.
 - **Bez prowizji od badaczy**: utrzymanie z dobrowolnych napiwków, patronatu instytucji
-  oraz mechanizmu 1,5% podatku przez fundację partnerską.
+  oraz darowizn na rozwój platformy.
 - **Open source**: kod i reguły możliwe do audytu.
 
 ## Struktura
 
 ```
 site/
-  index.html                  strona główna (PL)
+  index.html                  strona główna (PL): hero, plan (roadmap), sekcja kontrybucji
   zglos-projekt.html          formularz zgłoszenia projektu badawczego
   zostan-recenzentem.html     formularz zgłoszeń recenzentów
   zasady-recenzji.html        proces i kryteria recenzji
   polityka-prywatnosci.html   RODO + informacja o ciasteczkach
   regulamin.html              regulamin serwisu (etap bety)
+  404.html                    strona błędu (wpięta w CloudFront)
   sitemap.xml, robots.txt     SEO
   assets/style.css            design system (jasny motyw + tryb ciemny)
   assets/config.js            konfiguracja: Stripe i endpointy zapisów (uzupełnij)
   assets/app.js               demo-projekty, baner cookies, zgody, formularze, nawigacja
+  assets/roadmap.js           diagram planu rozwoju (D3)
+  assets/d3.v7.min.js         samodzielnie hostowany D3 (bez zewnętrznego CDN)
   assets/og-image.png         obraz Open Graph
   assets/fonts/               samodzielnie hostowane fonty Source Sans 3
+backend/                      forms -> Brevo: Lambda + API Gateway (patrz backend/README.md)
+scripts/, test/               strażnik repo i testy strukturalne
 deploy.sh                     sync do dowolnego bucketu S3 + inwalidacja CloudFront
 ```
 
@@ -56,6 +61,23 @@ cd site && python3 -m http.server 8000
 ```
 
 Następnie otwórz `http://localhost:8000`.
+
+## Rozwój i testy
+
+Sam serwis nie wymaga budowania, ale repozytorium ma lekkie narzędzia dev (Node, bez
+zależności runtime po stronie strony):
+
+```bash
+npm install        # narzędzia dev (husky, prettier) i wpięcie hooków git
+npm run serve      # lokalny podgląd (uruchamiasz samodzielnie)
+npm run check      # strażnik: brak długich myślników, sekretów i identyfikatorów infrastruktury
+npm test           # testy strukturalne: meta, sitemap, martwe linki, honeypot
+npm run verify     # check + test
+```
+
+Hook `pre-commit` (husky) uruchamia strażnika, sprawdzenie formatowania i testy przed
+każdym commitem. To samo powtarza CI (GitHub Actions) na push i pull request. Konwencje
+kodu i treści opisuje [docs/STYLEGUIDE.md](docs/STYLEGUIDE.md).
 
 ## Podłączenie płatności (opcjonalnie)
 

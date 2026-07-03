@@ -145,10 +145,10 @@ a{color:inherit;text-decoration:none}
 .nav__links a:hover::after{right:0}
 .nav__actions{display:flex;align-items:center;gap:12px;margin-left:auto}
 
-.theme-toggle{display:grid;place-items:center;width:38px;height:38px;border-radius:9px;
+.theme-toggle,.nav__icon{display:grid;place-items:center;width:38px;height:38px;border-radius:9px;
   background:var(--surface-2);border:1px solid var(--line);color:var(--muted);cursor:pointer;transition:.15s}
-.theme-toggle:hover{color:var(--text);border-color:var(--brand)}
-.theme-toggle:focus-visible{outline:none;box-shadow:var(--ring)}
+.theme-toggle:hover,.nav__icon:hover{color:var(--text);border-color:var(--brand)}
+.theme-toggle:focus-visible,.nav__icon:focus-visible{outline:none;box-shadow:var(--ring)}
 .theme-toggle .i-sun{display:none}
 .theme-toggle .i-moon{display:block}
 :root[data-theme="dark"] .theme-toggle .i-sun{display:block}

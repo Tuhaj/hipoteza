@@ -1,0 +1,30 @@
+{
+  "name": "hipoteza",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Statyczna strona platformy crowdfundingu dla nauki Hipoteza (bez frameworka, bez kroku build).",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://hipoteza.isy.sh",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tuhaj/hipoteza"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.mjs\"",
+    "check": "node scripts/check-guards.mjs",
+    "format": "prettier --write \"scripts/**/*.mjs\" \"test/**/*.mjs\" \"*.json\"",
+    "format:check": "prettier --check \"scripts/**/*.mjs\" \"test/**/*.mjs\" \"*.json\"",
+    "lint": "npm run format:check && npm run check",
+    "verify": "npm run check && npm test",
+    "serve": "python3 -m http.server 8000 --directory site",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "prettier": "^3.4.2"
+  }
+}

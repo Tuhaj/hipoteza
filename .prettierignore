@@ -1,0 +1,8 @@
+# Prettier only formats tooling code (scripts/, test/, JSON config).
+# The hand-authored site keeps its intentional compact formatting, so it is ignored.
+node_modules
+site
+backend
+doc
+*.md
+package-lock.json
