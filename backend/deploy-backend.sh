@@ -8,7 +8,8 @@
 #   HIPOTEZA_LAMBDA_REGION  (default eu-central-1)
 #   HIPOTEZA_LAMBDA_NAME    (default hipoteza-forms)
 #   HIPOTEZA_ALLOW_ORIGIN   (default https://hipoteza.isy.sh)
-#   HIPOTEZA_NOTIFY_EMAIL   (default pz@xfaang.com)
+#   HIPOTEZA_NOTIFY_EMAIL   (recipient of notifications, default pz@xfaang.com)
+#   HIPOTEZA_SENDER_EMAIL   (verified Brevo sender / From; default = NOTIFY email)
 #   BREVO_API_KEY           (optional here; SECRET, better set separately)
 #   SIGNUP_LIST_ID          (optional Brevo list id for signups)
 #
@@ -22,6 +23,7 @@ REGION="${HIPOTEZA_LAMBDA_REGION:-eu-central-1}"
 FN="${HIPOTEZA_LAMBDA_NAME:-hipoteza-forms}"
 ORIGIN="${HIPOTEZA_ALLOW_ORIGIN:-https://hipoteza.isy.sh}"
 NOTIFY="${HIPOTEZA_NOTIFY_EMAIL:-pz@xfaang.com}"
+SENDER="${HIPOTEZA_SENDER_EMAIL:-$NOTIFY}"
 ROLE_NAME="${FN}-role"
 API_NAME="${FN}-api"
 DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -53,7 +55,7 @@ else
 fi
 
 echo "-> Setting environment (non-secret unless you pass them in)"
-ENVVARS="ALLOW_ORIGIN=$ORIGIN,NOTIFY_EMAIL=$NOTIFY,SENDER_EMAIL=$NOTIFY"
+ENVVARS="ALLOW_ORIGIN=$ORIGIN,NOTIFY_EMAIL=$NOTIFY,SENDER_EMAIL=$SENDER"
 [ -n "${SIGNUP_LIST_ID:-}" ] && ENVVARS="$ENVVARS,SIGNUP_LIST_ID=$SIGNUP_LIST_ID"
 [ -n "${BREVO_API_KEY:-}" ] && ENVVARS="$ENVVARS,BREVO_API_KEY=$BREVO_API_KEY"
 aws lambda update-function-configuration --function-name "$FN" \

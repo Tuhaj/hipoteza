@@ -40,12 +40,13 @@ Klucz API pobierz w Brevo: SMTP & API -> API Keys. Następnie ustaw go na funkcj
 ```bash
 aws lambda update-function-configuration \
   --function-name hipoteza-forms --region eu-central-1 \
-  --environment 'Variables={ALLOW_ORIGIN=https://hipoteza.isy.sh,NOTIFY_EMAIL=pz@xfaang.com,SENDER_EMAIL=pz@xfaang.com,SIGNUP_LIST_ID=<ID_LISTY>,BREVO_API_KEY=<TWOJ_KLUCZ>}'
+  --environment 'Variables={ALLOW_ORIGIN=https://hipoteza.isy.sh,NOTIFY_EMAIL=pz@xfaang.com,SENDER_EMAIL=<ZWERYFIKOWANY_NADAWCA_BREVO>,SIGNUP_LIST_ID=<ID_LISTY>,BREVO_API_KEY=<TWOJ_KLUCZ>}'
 ```
 
 - `SIGNUP_LIST_ID` - ID listy w Brevo (Contacts -> Lists), do której dopisujemy kontakty.
-- `SENDER_EMAIL` - adres nadawcy powiadomień; musi być zweryfikowany w Brevo
-  (Senders). Zgodnie z ustaleniami: `pz@xfaang.com`.
+- `SENDER_EMAIL` - adres nadawcy powiadomień (From); musi być adresem
+  zweryfikowanym w Brevo (Senders). Trzymamy go tylko w zmiennej środowiskowej
+  funkcji, nie w repozytorium.
 
 Uwaga: podmieniając zmienne przez `update-function-configuration` podajesz PEŁNY
 zestaw (polecenie nadpisuje całość). Zachowaj pozostałe klucze jak wyżej.
