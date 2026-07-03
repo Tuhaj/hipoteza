@@ -43,9 +43,9 @@ deploy.sh                     sync do dowolnego bucketu S3 + inwalidacja CloudFr
 Strona jest w pełni statyczna. Nie używamy ciasteczek śledzących ani analityki, tylko
 niezbędnej pamięci lokalnej przeglądarki. Fonty są hostowane samodzielnie (bez zewnętrznych CDN).
 
-Formularze domyślnie zapisują dane tylko lokalnie w przeglądarce (`localStorage`). Aby zgłoszenia
-realnie trafiały na serwer, ustaw `signupEndpoint`, `reviewerEndpoint` i `projectEndpoint`
-w `site/assets/config.js` (np. własny endpoint API).
+Formularze wysyłają zgłoszenia na endpoint z `site/assets/config.js` (API Gateway + Lambda ->
+Brevo), a jako zapas trzymają kopię lokalnie w przeglądarce (`localStorage`). Kod i wdrożenie
+backendu opisuje [backend/README.md](backend/README.md). Puste endpointy = zapis tylko lokalny.
 
 ## Podgląd lokalny
 

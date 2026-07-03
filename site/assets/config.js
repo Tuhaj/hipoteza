@@ -10,12 +10,10 @@ window.HIPOTEZA_CONFIG = {
   // Sam klucz publiczny nie wystarczy do pobierania płatności bez backendu, patrz README.
   stripePublishableKey: "",
 
-  // Endpoint zapisów na betę (np. API Gateway + Lambda). Puste = zapis tylko lokalnie w przeglądarce.
-  signupEndpoint: "",
-
-  // Endpoint zgłoszeń recenzentów. Puste = zapis tylko lokalnie w przeglądarce.
-  reviewerEndpoint: "",
-
-  // Endpoint zgłoszeń projektów. Puste = zapis tylko lokalnie w przeglądarce.
-  projectEndpoint: ""
+  // Backend formularzy (API Gateway + Lambda -> Brevo). Ten sam endpoint dla
+  // wszystkich trzech typów, funkcja sama rozpoznaje typ zgłoszenia. To publiczny
+  // adres (nie sekret). Zbieranie danych rusza po ustawieniu klucza Brevo na Lambdzie.
+  signupEndpoint: "https://bby0t4mk4h.execute-api.eu-central-1.amazonaws.com/",
+  reviewerEndpoint: "https://bby0t4mk4h.execute-api.eu-central-1.amazonaws.com/",
+  projectEndpoint: "https://bby0t4mk4h.execute-api.eu-central-1.amazonaws.com/"
 };
