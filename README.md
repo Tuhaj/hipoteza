@@ -17,7 +17,7 @@ Operator: **Piotr Zientara Ego Development** (jednoosobowa działalność gospod
 - **Model „wszystko albo nic”** z małymi celami: pilotaże, replikacje, sprzęt, popularyzacja.
 - **Radykalna jawność**: budżet, kamienie milowe, dane i wyniki w otwartym dostępie.
 - **Wypłata w transzach** po realizacji etapów.
-- **Zero prowizji dla badaczy**: utrzymanie z dobrowolnych napiwków, patronatu instytucji
+- **Bez prowizji od badaczy**: utrzymanie z dobrowolnych napiwków, patronatu instytucji
   oraz mechanizmu 1,5% podatku przez fundację partnerską.
 - **Open source**: kod i reguły możliwe do audytu.
 
