@@ -15,5 +15,9 @@ window.HIPOTEZA_CONFIG = {
   // adres (nie sekret). Zbieranie danych rusza po ustawieniu klucza Brevo na Lambdzie.
   signupEndpoint: "https://bby0t4mk4h.execute-api.eu-central-1.amazonaws.com/",
   reviewerEndpoint: "https://bby0t4mk4h.execute-api.eu-central-1.amazonaws.com/",
-  projectEndpoint: "https://bby0t4mk4h.execute-api.eu-central-1.amazonaws.com/"
+  projectEndpoint: "https://bby0t4mk4h.execute-api.eu-central-1.amazonaws.com/",
+
+  // Ankieta kierunku (GET zwraca wyniki, POST {choice:"a"|"b"} oddaje głos).
+  // Ten sam backend (Lambda) zapisuje głosy w DynamoDB. Publiczny adres, nie sekret.
+  pollEndpoint: "https://bby0t4mk4h.execute-api.eu-central-1.amazonaws.com/poll"
 };

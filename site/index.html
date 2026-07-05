@@ -102,6 +102,74 @@
     </div>
   </section>
 
+  <!-- POLL -->
+  <section class="band poll-band" id="ankieta">
+    <div class="wrap wrap--narrow">
+      <div class="poll" id="poll" data-state="loading">
+        <div class="poll__head">
+          <span class="eyebrow">Pomóż wybrać kierunek</span>
+          <h2 class="poll__q">Co byłoby bardziej przydatne?</h2>
+          <p class="poll__sub">Dwa kierunki dla Hipotezy. Zagłosuj, a od razu zobaczysz wyniki na żywo. Jeden głos.</p>
+        </div>
+        <div class="poll__options" role="group" aria-label="Ankieta kierunku">
+          <button type="button" class="poll__opt" data-choice="a" aria-pressed="false">
+            <span class="poll__pct" aria-hidden="true"></span>
+            <span class="poll__optlabel">Kickstarter dla nowych projektów</span>
+            <span class="poll__optdesc">Finansowanie świeżych badań od zera: pilotaże, replikacje i nowe pomysły.</span>
+            <span class="poll__bar" aria-hidden="true"><span class="poll__fill"></span></span>
+          </button>
+          <button type="button" class="poll__opt" data-choice="b" aria-pressed="false">
+            <span class="poll__pct" aria-hidden="true"></span>
+            <span class="poll__optlabel">Wsparcie istniejących projektów</span>
+            <span class="poll__optdesc">Projekty, które mają już finansowanie i szukają kadry: ludzi do zespołu.</span>
+            <span class="poll__bar" aria-hidden="true"><span class="poll__fill"></span></span>
+          </button>
+        </div>
+        <p class="poll__note" id="pollNote" role="status" aria-live="polite">Ładujemy wyniki...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO MODELS -->
+  <section class="band band--alt" id="modele">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Jak działałby każdy z tych modeli</h2>
+        <p class="section-sub">Dwa kierunki z ankiety powyżej, rozpisane na proces krok po kroku. To pomaga ocenić, który ma większy sens.</p>
+      </div>
+
+      <div class="model model--a">
+        <div class="model__head">
+          <span class="model__badge">Model A</span>
+          <h3>Kickstarter dla nowych projektów</h3>
+          <p>Finansujemy powstanie badania od zera: od pomysłu do wyników.</p>
+        </div>
+        <ol class="flow">
+          <li class="flow__step"><span class="flow__no">1</span><span class="flow__label">Zgłoszenie projektu</span><span class="flow__desc">Hipoteza, metoda, budżet i kamienie milowe.</span></li>
+          <li class="flow__step"><span class="flow__no">2</span><span class="flow__label">Recenzja ekspercka</span><span class="flow__desc">Niezależni recenzenci dopuszczają projekt do zbiórki.</span></li>
+          <li class="flow__step"><span class="flow__no">3</span><span class="flow__label">Zbiórka z celem</span><span class="flow__desc">Model „wszystko albo nic”, próg i termin.</span></li>
+          <li class="flow__step"><span class="flow__no">4</span><span class="flow__label">Wypłata w transzach</span><span class="flow__desc">Środki po kolejnych kamieniach milowych.</span></li>
+          <li class="flow__step"><span class="flow__no">5</span><span class="flow__label">Otwarte wyniki</span><span class="flow__desc">Dane, kod i raport w otwartym dostępie.</span></li>
+        </ol>
+      </div>
+
+      <div class="model model--b">
+        <div class="model__head">
+          <span class="model__badge">Model B</span>
+          <h3>Wsparcie istniejących projektów</h3>
+          <p>Łączymy sfinansowane już badania z kadrą, która ich szuka.</p>
+        </div>
+        <ol class="flow">
+          <li class="flow__step"><span class="flow__no">1</span><span class="flow__label">Zgłoszenie wakatu</span><span class="flow__desc">Sfinansowany projekt opisuje potrzebną rolę.</span></li>
+          <li class="flow__step"><span class="flow__no">2</span><span class="flow__label">Weryfikacja</span><span class="flow__desc">Potwierdzamy finansowanie i sensowność badania.</span></li>
+          <li class="flow__step"><span class="flow__no">3</span><span class="flow__label">Publikacja roli</span><span class="flow__desc">Jawne ogłoszenie: zakres, czas, wynagrodzenie z grantu.</span></li>
+          <li class="flow__step"><span class="flow__no">4</span><span class="flow__label">Zgłoszenia kadry</span><span class="flow__desc">Naukowcy i specjaliści aplikują do zespołu.</span></li>
+          <li class="flow__step"><span class="flow__no">5</span><span class="flow__label">Dołączenie do zespołu</span><span class="flow__desc">Dopasowana osoba realizuje badanie.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
   <!-- DEMO PROJECTS -->
   <section class="band band--demo" id="projekty">
     <div class="wrap">

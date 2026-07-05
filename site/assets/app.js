@@ -507,4 +507,90 @@
     }, { rootMargin: "-45% 0px -50% 0px" });
     sections.forEach(function (s) { io.observe(s); });
   }
+
+  /* ---------- Poll (wybór kierunku, backend zlicza głosy) ---------- */
+  (function () {
+    var root = document.getElementById("poll");
+    if (!root) return;
+    var endpoint = CFG.pollEndpoint;
+    var note = document.getElementById("pollNote");
+    var opts = Array.prototype.slice.call(root.querySelectorAll(".poll__opt"));
+    var STORE = "hipoteza_poll_vote";
+
+    function plural(n) {
+      var n10 = n % 10, n100 = n % 100;
+      if (n === 1) return "głos";
+      if (n10 >= 2 && n10 <= 4 && (n100 < 10 || n100 >= 20)) return "głosy";
+      return "głosów";
+    }
+    function pct(n, total) { return total > 0 ? Math.round((n / total) * 100) : 0; }
+    function stored() { try { return localStorage.getItem(STORE); } catch (e) { return null; } }
+    function remember(c) { try { localStorage.setItem(STORE, c); } catch (e) {} }
+
+    function render(res, myChoice) {
+      var counts = { a: (res && res.a) || 0, b: (res && res.b) || 0 };
+      var total = counts.a + counts.b;
+      opts.forEach(function (btn) {
+        var c = btn.getAttribute("data-choice");
+        var p = pct(counts[c], total);
+        var fill = btn.querySelector(".poll__fill");
+        var pctEl = btn.querySelector(".poll__pct");
+        if (fill) fill.style.width = p + "%";
+        if (pctEl) pctEl.textContent = p + "%";
+        btn.setAttribute("aria-pressed", c === myChoice ? "true" : "false");
+      });
+      if (myChoice) {
+        root.setAttribute("data-state", "voted");
+        note.textContent = "Dziękujemy za głos. Oddano " + total + " " + plural(total) + ". Wyniki na żywo.";
+      } else {
+        root.setAttribute("data-state", "ready");
+        note.textContent = total > 0
+          ? "Oddano " + total + " " + plural(total) + ". Zagłosuj, aby zobaczyć podział."
+          : "Bądź pierwszą osobą, która zagłosuje.";
+      }
+    }
+
+    function vote(choice) {
+      if (!endpoint) return;
+      root.setAttribute("data-state", "loading");
+      note.textContent = "Zapisujemy głos...";
+      fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ choice: choice })
+      })
+        .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+        .then(function (res) { remember(choice); render(res, choice); })
+        .catch(function () {
+          root.setAttribute("data-state", "ready");
+          note.textContent = "Nie udało się zapisać głosu. Spróbuj ponownie za chwilę.";
+        });
+    }
+
+    opts.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        if (root.getAttribute("data-state") === "voted" || stored()) return;
+        vote(btn.getAttribute("data-choice"));
+      });
+    });
+
+    var mine = stored();
+    if (!endpoint) {
+      root.setAttribute("data-state", "ready");
+      note.textContent = "Ankieta będzie dostępna wkrótce.";
+      return;
+    }
+    fetch(endpoint, { method: "GET" })
+      .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return r.json(); })
+      .then(function (res) { render(res, mine); })
+      .catch(function () {
+        if (mine) {
+          root.setAttribute("data-state", "voted");
+          note.textContent = "Dziękujemy za głos.";
+        } else {
+          root.setAttribute("data-state", "ready");
+          note.textContent = "Nie udało się pobrać wyników. Możesz zagłosować mimo to.";
+        }
+      });
+  })();
 })();

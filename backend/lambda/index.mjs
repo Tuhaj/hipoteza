@@ -9,13 +9,19 @@
 //   NOTIFY_EMAIL    (optional; where to email new submissions)
 //   SENDER_EMAIL    (optional; verified Brevo sender, defaults to NOTIFY_EMAIL)
 //   ALLOW_ORIGIN    (CORS origin, e.g. https://hipoteza.isy.sh)
+//   POLL_TABLE      (optional; DynamoDB table name for the homepage poll)
+
+import awsDdb from "@aws-sdk/client-dynamodb";
+const { DynamoDBClient, UpdateItemCommand, GetItemCommand } = awsDdb;
 
 const BREVO = "https://api.brevo.com/v3";
+const ddb = new DynamoDBClient({});
+const POLL_ID = "prod";
 
 function cors() {
   return {
     "Access-Control-Allow-Origin": process.env.ALLOW_ORIGIN || "*",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "content-type",
     "Content-Type": "application/json",
   };
@@ -26,7 +32,12 @@ function resp(statusCode, obj) {
 
 export const handler = async (event) => {
   const method = event?.requestContext?.http?.method || "POST";
+  const path = event?.rawPath || event?.requestContext?.http?.path || "/";
   if (method === "OPTIONS") return resp(204, {});
+
+  // Homepage poll: GET returns the tally, POST records a vote.
+  if (path.replace(/\/+$/, "").endsWith("/poll")) return handlePoll(method, event);
+
   if (method !== "POST") return resp(405, { error: "method_not_allowed" });
 
   const raw = event.body || "{}";
@@ -116,4 +127,51 @@ function renderHtml(type, d) {
     )
     .join("");
   return `<h2 style="font-family:sans-serif">Nowe zgłoszenie: ${esc(type)}</h2><table style="border-collapse:collapse;font-family:sans-serif;font-size:14px">${rows}</table>`;
+}
+
+// ---- Homepage poll (DynamoDB atomic counters, one item id="prod", attrs a/b) ----
+async function handlePoll(method, event) {
+  const table = process.env.POLL_TABLE;
+  if (!table) return resp(503, { error: "poll_not_configured" });
+
+  if (method === "GET") return resp(200, await pollResults(table));
+
+  if (method === "POST") {
+    let data;
+    try {
+      data = JSON.parse(event.body || "{}");
+    } catch {
+      return resp(400, { error: "bad_json" });
+    }
+    const choice = data.choice === "a" ? "a" : data.choice === "b" ? "b" : null;
+    if (!choice) return resp(400, { error: "bad_choice" });
+    try {
+      await ddb.send(
+        new UpdateItemCommand({
+          TableName: table,
+          Key: { id: { S: POLL_ID } },
+          UpdateExpression: "ADD #c :one",
+          ExpressionAttributeNames: { "#c": choice },
+          ExpressionAttributeValues: { ":one": { N: "1" } },
+        })
+      );
+    } catch (e) {
+      console.error("poll vote:", e.message);
+      return resp(500, { error: "vote_failed" });
+    }
+    return resp(200, await pollResults(table));
+  }
+  return resp(405, { error: "method_not_allowed" });
+}
+
+async function pollResults(table) {
+  try {
+    const r = await ddb.send(new GetItemCommand({ TableName: table, Key: { id: { S: POLL_ID } } }));
+    const a = Number(r.Item?.a?.N || 0);
+    const b = Number(r.Item?.b?.N || 0);
+    return { a, b, total: a + b };
+  } catch (e) {
+    console.error("poll results:", e.message);
+    return { a: 0, b: 0, total: 0 };
+  }
 }

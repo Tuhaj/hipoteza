@@ -28,6 +28,7 @@ FN="${HIPOTEZA_LAMBDA_NAME:-hipoteza-forms}"
 ORIGIN="${HIPOTEZA_ALLOW_ORIGIN:-https://hipoteza.isy.sh}"
 NOTIFY="${HIPOTEZA_NOTIFY_EMAIL:-pz@xfaang.com}"
 SENDER="${HIPOTEZA_SENDER_EMAIL:-$NOTIFY}"
+POLL_TABLE="${HIPOTEZA_POLL_TABLE:-hipoteza-poll}"
 ROLE_NAME="${FN}-role"
 API_NAME="${FN}-api"
 DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -41,6 +42,21 @@ if ! aws iam get-role --role-name "$ROLE_NAME" >/dev/null 2>&1; then
   echo "   waiting for role propagation..."; sleep 12
 fi
 ROLE_ARN="$(aws iam get-role --role-name "$ROLE_NAME" --query 'Role.Arn' --output text)"
+
+echo "-> Ensuring DynamoDB table $POLL_TABLE (homepage poll, pay-per-request)"
+if ! aws dynamodb describe-table --table-name "$POLL_TABLE" --region "$REGION" >/dev/null 2>&1; then
+  aws dynamodb create-table --table-name "$POLL_TABLE" \
+    --attribute-definitions AttributeName=id,AttributeType=S \
+    --key-schema AttributeName=id,KeyType=HASH \
+    --billing-mode PAY_PER_REQUEST --region "$REGION" >/dev/null
+  aws dynamodb wait table-exists --table-name "$POLL_TABLE" --region "$REGION"
+fi
+
+echo "-> Granting the role least-privilege access to the poll table"
+ACCT="$(aws sts get-caller-identity --query Account --output text)"
+TABLE_ARN="arn:aws:dynamodb:$REGION:$ACCT:table/$POLL_TABLE"
+aws iam put-role-policy --role-name "$ROLE_NAME" --policy-name hipoteza-poll-ddb \
+  --policy-document "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"dynamodb:UpdateItem\",\"dynamodb:GetItem\"],\"Resource\":\"$TABLE_ARN\"}]}" >/dev/null
 
 echo "-> Packaging function"
 ZIP="$(mktemp -d)/fn.zip"
@@ -59,7 +75,7 @@ else
 fi
 
 echo "-> Setting environment (non-secret unless you pass them in)"
-ENVVARS="ALLOW_ORIGIN=$ORIGIN,NOTIFY_EMAIL=$NOTIFY,SENDER_EMAIL=$SENDER"
+ENVVARS="ALLOW_ORIGIN=$ORIGIN,NOTIFY_EMAIL=$NOTIFY,SENDER_EMAIL=$SENDER,POLL_TABLE=$POLL_TABLE"
 [ -n "${SIGNUP_LIST_ID:-}" ] && ENVVARS="$ENVVARS,SIGNUP_LIST_ID=$SIGNUP_LIST_ID"
 [ -n "${BREVO_API_KEY:-}" ] && ENVVARS="$ENVVARS,BREVO_API_KEY=$BREVO_API_KEY"
 aws lambda update-function-configuration --function-name "$FN" \
